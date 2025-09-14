@@ -1,0 +1,12 @@
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe.config
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.pdb
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\MaterialManagementSystem.Form1.resources
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\MaterialManagementSystem.MaterialForm.resources
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\MaterialManagementSystem.OrdersForm.resources
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\MaterialManagementSystem.SuppliersForm.resources
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Properties.Resources.resources
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.GenerateResource.cache
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.CoreCompileInputs.cache
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.exe
+C:\Users\Алиса\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.pdb
