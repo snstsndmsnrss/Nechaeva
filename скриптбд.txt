@@ -1,0 +1,125 @@
+Таблица: Кадры
+
+CREATE TABLE Кадры (
+    ID_доступа INT PRIMARY KEY,
+    Доступное_оборудование NVARCHAR(200)
+);
+
+
+ Таблица: Должности
+
+CREATE TABLE Должности (
+    ID_должности INT PRIMARY KEY,
+    ID_доступа INT,
+    Наименование_должности NVARCHAR(200) NOT NULL,
+    CONSTRAINT FK_Должности_Кадры FOREIGN KEY (ID_доступа) REFERENCES Кадры(ID_доступа)
+);
+
+
+ Таблица: Сотрудники
+
+CREATE TABLE Сотрудники (
+    ID_сотрудника INT PRIMARY KEY,
+    ID_должности INT,
+    ФИО NVARCHAR(200) NOT NULL,
+    Дата_рождения DATE,
+    Паспортные_данные NVARCHAR(100),
+    Банковские_реквизиты NVARCHAR(100),
+    Семейное_положение NVARCHAR(50),
+    Состояние_здоровья NVARCHAR(100),
+    CONSTRAINT FK_Сотрудники_Должности FOREIGN KEY (ID_должности) REFERENCES Должности(ID_должности)
+);
+
+
+ Таблица: Системы_турникетов
+
+CREATE TABLE Системы_турникетов (
+    ID_посещения INT PRIMARY KEY,
+    ID_сотрудника INT,
+    Дата_события DATE,
+    Время_события TIME,
+    Вход BIT,
+    CONSTRAINT FK_Турникеты_Сотрудники FOREIGN KEY (ID_сотрудника) REFERENCES Сотрудники(ID_сотрудника)
+);
+
+
+ Таблица: Поставщики
+
+CREATE TABLE Поставщики (
+    ID_поставщика INT PRIMARY KEY,
+    ИНН NVARCHAR(20),
+    Юридический_адрес NVARCHAR(255),
+    Контактные_данные NVARCHAR(255)
+);
+
+
+ Таблица: Тип_материала
+
+CREATE TABLE Тип_материала (
+    ID_типа_материала INT PRIMARY KEY,
+    Наименование_типа NVARCHAR(100) NOT NULL
+);
+
+
+ Таблица: Материалы
+
+CREATE TABLE Материалы (
+    ID_материала INT PRIMARY KEY,
+    Количество INT,
+    Тип_материала INT,
+    Наименование NVARCHAR(200),
+    Изображение NVARCHAR(MAX),
+    Стоимость DECIMAL(12,2),
+    CONSTRAINT FK_Материалы_Тип FOREIGN KEY (Тип_материала) REFERENCES Тип_материала(ID_типа_материала)
+);
+
+
+ Таблица: Поставки
+CREATE TABLE Поставки (
+    ID_поставки INT PRIMARY KEY,
+    ID_поставщика INT,
+    ID_материала INT,
+    Дата_поставки DATE,
+    CONSTRAINT FK_Поставки_Поставщики FOREIGN KEY (ID_поставщика) REFERENCES Поставщики(ID_поставщика),
+    CONSTRAINT FK_Поставки_Материалы FOREIGN KEY (ID_материала) REFERENCES Материалы(ID_материала)
+);
+
+
+ Таблица: Состав_поставки
+
+CREATE TABLE Состав_поставки (
+    ID_материала INT,
+    ID_поставки INT,
+    Количество_материала INT,
+    Отв_сотрудник INT,
+    PRIMARY KEY (ID_материала, ID_поставки),
+    CONSTRAINT FK_СоставПоставки_Материалы FOREIGN KEY (ID_материала) REFERENCES Материалы(ID_материала),
+    CONSTRAINT FK_СоставПоставки_Поставки FOREIGN KEY (ID_поставки) REFERENCES Поставки(ID_поставки),
+    CONSTRAINT FK_СоставПоставки_Сотрудники FOREIGN KEY (Отв_сотрудник) REFERENCES Сотрудники(ID_сотрудника)
+);
+
+Таблица: Склад
+CREATE TABLE Склад (
+    ID_материала_склад INT PRIMARY KEY,
+    ID_материала INT,
+    Адрес_склада NVARCHAR(255),
+    Дата_записи DATE,
+    Количество INT,
+    CONSTRAINT FK_Склад_Материалы FOREIGN KEY (ID_материала) REFERENCES Материалы(ID_материала)
+);
+
+Таблица: Продукция
+CREATE TABLE Продукция (
+    Артикул INT PRIMARY KEY,
+    Тип NVARCHAR(100),
+    Наименование NVARCHAR(200),
+    Описание NVARCHAR(MAX),
+    Изображение NVARCHAR(MAX),
+    Стоимость DECIMAL(12,2),
+    Максимальная_скидка DECIMAL(5,2),
+    Длина_упаковки DECIMAL(10,2),
+    Ширина_упаковки DECIMAL(10,2),
+    Высота_упаковки DECIMAL(10,2),
+    Вес_с_упаковкой DECIMAL(10,2),
+    Вес_без_упаковки DECIMAL(10,2),
+
